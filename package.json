@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "10.4.1",
+    "npm": "6.1.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "yarn --cwd client start",
+    "dev": "concurrently \"yarn server\" \"yarn client\" \"yarn webhook\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.0.1",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "localtunnel": "^1.9.1",
+    "mongoose": "^5.2.7",
+    "mongoose-simple-random": "^0.4.1",
+    "nodemon": "^1.18.3",
+    "passport": "^0.4.0",
+    "path-parser": "^4.2.0",
+    "sendgrid": "^5.2.3",
+    "socket.io": "^2.1.1"
+  }
+}
