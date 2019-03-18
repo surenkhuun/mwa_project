@@ -1,0 +1,77 @@
+<div class="wrapper">
+  <div class="container">
+    <h2>
+      {{ exam?.date | date }}
+      <small>{{ exam?.status }}</small>
+    </h2>
+
+    <h4>Questions</h4>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let question of exam?.questions; let i=index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class='count'>{{ i+1 }}</span>
+            {{ question.description | slice:0:80 }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ question.description }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <h4>Students</h4>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let taker of exam?.takers; let i=index" [expanded]="step === i" (opened)="step = i">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <span class='count'>{{ i+1 }}</span> {{ taker.name }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ taker.status }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-chip-list class='total'>
+          <mat-chip>Total time spent: <strong>{{ taker.timeSpent }}s</strong></mat-chip>
+          <mat-chip color="accent" selected>Time spent cheating: <strong>{{ taker.timeBlur }}s</strong></mat-chip>
+        </mat-chip-list>
+
+        <mat-card *ngFor="let answer of taker.answers; let i=index">
+          <mat-card-header>
+            Question {{ i+1 }}
+          </mat-card-header>
+          <mat-chip>Time spent: <strong>{{ answer.timeSpent }}s</strong></mat-chip>
+          <button mat-button (click)="prev(answer._id)" style="margin-left: 1rem">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button mat-button (click)="next(answer._id)">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+
+          <ace-editor
+                [(text)]="answer.snapshots[answer.snapshots.length - counters[answer._id]]"
+                [mode]="'javascript'"
+                [readOnly]="true"
+          ></ace-editor>
+
+        </mat-card>
+
+        <mat-action-row>
+          <button mat-button color="accent" (click)="pass(taker)">
+            <mat-icon>close</mat-icon> Fail
+          </button>
+          <button mat-raised-button color="primary" (click)="fail(taker)">
+            <mat-icon>done</mat-icon> Pass
+          </button>
+        </mat-action-row>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <button mat-raised-button *ngIf="exam?.status !== 'EVALUATED'" color="primary" class='submit' (click)="onSubmit()">
+      Evaluate
+    </button>
+
+  </div>
+</div>

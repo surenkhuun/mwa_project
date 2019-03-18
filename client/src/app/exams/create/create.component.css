@@ -1,0 +1,15 @@
+.email-field {
+  display: inline-block;
+}
+
+.card {
+  width: 700px;
+}
+
+.field {
+  width: 300px;
+}
+
+.field.email {
+  margin: 0 1rem;
+}

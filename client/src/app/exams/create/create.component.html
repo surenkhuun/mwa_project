@@ -1,0 +1,45 @@
+<div class='center'>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Create and start exam</mat-card-title>
+    </mat-card-header>
+
+    <p>
+      Please enter takers name and email
+    </p>
+
+    <form [formGroup]='form' (ngSubmit)="onSubmit()">
+
+      <div formArrayName="takers">
+        <div *ngFor="let email of f.takers.controls; let i=index">
+          <div [formGroupName]="i">
+            <mat-form-field class='field'>
+              <input matInput type="text" placeholder="Name" formControlName="name"/>
+            </mat-form-field>
+            <mat-form-field class='field email'>
+              <input matInput type="text" placeholder="Email" formControlName="email"/>
+            </mat-form-field>
+            <button mat-button *ngIf="f.takers.controls.length > 1" (click)="removeEmail(i)">
+              <mat-icon >
+                close
+              </mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <span color="warn">{{ error }}</span>
+
+      <mat-card-actions>
+        <a mat-button (click)="addEmail()">
+          <mat-icon>add</mat-icon>
+          Add student
+        </a>
+        <button mat-raised-button type="submit" [disabled]="!form.valid" color="primary">
+          <mat-icon>email</mat-icon>
+          Send invitations
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

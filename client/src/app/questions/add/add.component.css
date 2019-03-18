@@ -1,0 +1,11 @@
+.full-width {
+  display: block;
+}
+
+.card {
+  width: 800px;
+}
+
+textarea {
+  min-height: 400px;
+}

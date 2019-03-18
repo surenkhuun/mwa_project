@@ -1,0 +1,64 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card {
+  margin: 1rem 0;
+}
+
+.ace_editor {
+  min-height: 100px;
+  width: 100%;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.container {
+  width: 800px;
+}
+
+.submit {
+  margin: 1.5rem 0 3rem 0;
+  width: 100%;
+}
+
+.mat-card {
+  display: block;
+}
+
+h2 small {
+  color: #aaa;
+  margin-left: 1rem;
+}
+
+.count {
+  font-weight: 600;
+  color: #aaa;
+  margin-right: 1rem;
+}
+
+.mat-expansion-panel-header-title{
+  flex-grow: 2;
+}
+.mat-expansion-panel-header-description {
+  flex-grow: 1;
+}
+button {
+  margin-right: 1rem;
+}
+
+.total {
+  margin-bottom: 2rem;
+}
+
+.mat-chip {
+  font-weight: 300;
+  font-size: 0.8rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.mat-chip strong {
+  font-weight: 500;
+  margin-left: 5px;
+}

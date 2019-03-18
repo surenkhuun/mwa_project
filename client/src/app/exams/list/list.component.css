@@ -1,0 +1,12 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 400px;
+}
+
+.action {
+  text-align: right;
+}

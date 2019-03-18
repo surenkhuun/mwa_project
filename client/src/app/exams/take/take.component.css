@@ -1,0 +1,40 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 800px;
+}
+
+.ace_editor {
+  min-height: 400px;
+  width: 100%;
+  overflow: auto;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 1rem 0 3rem 0;
+}
+
+.mat-card {
+  margin-bottom: 1rem;
+}
+
+.countdown-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+}
+
+.count-down {
+  z-index: 4;
+  line-height: 64px;
+  height: 64px;
+  font-size: 30px;
+  color: #eee;
+}

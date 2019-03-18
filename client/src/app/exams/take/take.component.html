@@ -1,0 +1,41 @@
+<div class='countdown-wrapper'>
+  <countdown [config]="counterConfig"
+      (finished)="onFinished()"
+  >
+    $!m!:$!s!
+  </countdown>
+</div>
+<div *ngIf="!message" class="wrapper">
+
+  <div class='container'>
+
+    <mat-card *ngFor="let question of exam?.questions; let i=index">
+      <mat-card-title>
+        Question {{ i + 1 }}
+      </mat-card-title>
+      <p>
+        {{ question.description }}
+      </p>
+
+      <ace-editor
+            [theme]="null"
+            [(text)]="savedAnswers[question._id]"
+            [mode]="'javascript'"
+            [durationBeforeCallback]="500"
+            (textChanged)="onEditorChange($event, question._id)"
+      ></ace-editor>
+    </mat-card>
+
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Submit
+    </button>
+  </div>
+</div>
+
+<div class="center" *ngIf="message">
+  <mat-card>
+    <mat-card-title>
+      {{ message }}
+    </mat-card-title>
+  </mat-card>
+</div>

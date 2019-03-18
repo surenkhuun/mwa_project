@@ -1,0 +1,32 @@
+<div class='center'>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Add user</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]='form' (ngSubmit)="onSubmit()">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Email" type='text' name='email' formControlName="email" />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Name" type='text' name='name' formControlName="name" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select placeholder="Role" formControlName="role">
+          <mat-option value="STAFF">
+            Staff
+          </mat-option>
+          <mat-option value="ADMIN">
+            Admin
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <span color="warn">{{ error }}</span>
+      <mat-card-actions>
+        <button mat-raised-button type="submit" [disabled]="!form.valid" color="primary">
+          Add
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+
+</div>

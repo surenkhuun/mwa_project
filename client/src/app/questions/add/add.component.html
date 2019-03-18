@@ -1,0 +1,18 @@
+<div class='center'>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Add question</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]='form' (ngSubmit)="onSubmit()">
+      <mat-form-field class="full-width">
+        <textarea matInput placeholder="Description" type='text' name='description' formControlName="description"></textarea>
+      </mat-form-field>
+      <span color="warn">{{ error }}</span>
+      <mat-card-actions>
+        <button mat-raised-button type="submit" [disabled]="!form.valid" color="primary">
+          Add
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
